@@ -3,12 +3,14 @@ for (var i = 0; i < numOfDrums; i++) {
   document.querySelectorAll('.drum')[i].addEventListener('click', function() {
     buttonInnerHtml = this.innerHTML
     makesound(buttonInnerHtml);
+    buttonColor(buttonInnerHtml);
 
   });
 }
 
 document.addEventListener('keydown', function(event){
   makesound(event.key);
+  buttonColor(event.key);
 });
 
 
@@ -56,6 +58,19 @@ function makesound(key){
     console.log('default');
 
   }
+}
+
+
+function buttonColor(key){
+
+ var animated_button = document.querySelector("." + key);
+ animated_button.classList.add('pressed');
+
+ setTimeout(function (){
+   animated_button.classList.remove("pressed");
+
+ }, 100);
+
 }
 
 
